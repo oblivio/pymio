@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>pymio v0.1</title>
+    <link rel="stylesheet" href="static/css/main.css" />
+  </head>
+  <body>
+
+    <div id="app">
+      <div class="heading">
+        <p class="pymio-label">
+          <span class="status-label">pymio v0.1</span>
+          <span class="status-label" v-if="isDownloading"> :: downloading...</span>
+          <span class="status-label" v-if="isFinishedDownloading"> :: download complete.</span>
+          <span class="status-label" v-if="isDownloadError"> :: something went wrong - please try again...</span>
+        </p>
+      </div>
+      <div class="video-background">
+        <div class="video-foreground">
+          <iframe id="video-iframe" src="https://www.youtube.com/embed/W0LHTWG-UmQ?controls=0&showinfo=0&rel=0&autoplay=1&loop=1&playlist=W0LHTWG-UmQ" frameborder="0" allowfullscreen></iframe>
+        </div>
+      </div>
+
+      <div id="vidtop-content">
+        <div class="vid-info">
+      	  <h1>Download List <span id="refresh-button" @click="checkYAML()" class="refresh">refresh</span></h1>
+          <div class="search-box">
+            <input id="search-input" type="text" />
+            <input @click="search()" type="button" value="search" />
+          </div>
+          <ol>
+            <li v-for="entry in download_list">
+              {{ entry.vid_id[0] }} <span class="remove" v-on:click="removeVideo(entry.vid_id[0])">remove</span>
+              <ul>
+                <li v-for="k in Object.keys(entry)">
+                  {{k}} : {{entry[k][0]}}
+                </li>
+              </ul>
+            </li>
+          </ol>
+        </div>
+      </div>
+
+      <div class="box-wrapper">
+        <div id="results-container">
+        <div v-for="vid in search_results" class="box effect8">
+        <div class="box-button">
+          <span v-on:click="addVideo(vid)" class="add effect8">add</span>
+          <span v-on:click="previewVideo(vid)" class="preview effect8">preview</span>
+        </div>
+          <h4>{{vid}}</h4>
+        </div>
+        </div>
+        <div @click="download_yaml()" id="download-all">
+          <span>download</span>
+        </div>
+      </div>
+
+    </div>
+  </body>
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+  <script src="static/js/main.js"></script>
+</html>

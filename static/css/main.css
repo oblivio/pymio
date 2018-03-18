@@ -1,0 +1,197 @@
+* { box-sizing: border-box; }
+.video-background {
+  background: #000;
+  position: fixed;
+  top: 0; right: 0; bottom: 0; left: 0;
+  z-index: -99;
+}
+.video-foreground,
+.video-background iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+#vidtop-content {
+  top: 0;
+  color: #fff;
+}
+.vid-info {
+  max-height: 20em;
+  min-height: 20em;
+  overflow: auto;
+  position: absolute; top: 0; right: 0; width: 33%; background: rgba(0,0,0,0.3); color: #fff; padding: 1rem; font-family: Avenir, Helvetica, sans-serif;
+}
+.vid-info h1 { font-size: 2rem; font-weight: 700; margin-top: 0; line-height: 1.2; }
+.vid-info a { display: block; color: #fff; text-decoration: none; background: rgba(0,0,0,0.5); transition: .6s background; border-bottom: none; margin: 1rem auto; text-align: center; }
+@media (min-aspect-ratio: 16/9) {
+  .video-foreground { height: 300%; top: -100%; }
+}
+@media (max-aspect-ratio: 16/9) {
+  .video-foreground { width: 300%; left: -100%; }
+}
+@media all and (max-width: 600px) {
+.vid-info { width: 50%; padding: .5rem; }
+.vid-info h1 { margin-bottom: .2rem; }
+}
+@media all and (max-width: 500px) {
+.vid-info .acronym { display: none; }
+}
+/*==================================================
+ * Effect 8
+ * ===============================================*/
+.effect8
+{
+    position:relative;
+    -webkit-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+       -moz-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+            box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+}
+.effect8:before, .effect8:after
+{
+    content:"";
+    position:absolute;
+    z-index:-1;
+    -webkit-box-shadow:0 0 20px rgba(255,255,255,0.8);
+    -moz-box-shadow:0 0 20px rgba(255,255,255,0.8);
+    box-shadow:0 0 20px rgba(255,255,255,0.8);
+    top:10px;
+    bottom:10px;
+    left:0;
+    right:0;
+    -moz-border-radius:100px / 10px;
+    border-radius:100px / 10px;
+}
+.effect8:after
+{
+    right:10px;
+    left:auto;
+    -webkit-transform:skew(8deg) rotate(3deg);
+       -moz-transform:skew(8deg) rotate(3deg);
+        -ms-transform:skew(8deg) rotate(3deg);
+         -o-transform:skew(8deg) rotate(3deg);
+            transform:skew(8deg) rotate(3deg);
+}
+.box {
+    width:25%;
+    height: 5em;
+    background: rgba(0,0,0,0.8);
+    border-radius: 15px;
+    margin:40px auto;
+    float: left;
+    position: relative;
+    bottom:1em;
+    margin-left:1em;
+}
+.box h4{
+  text-align: center;
+  letter-spacing: 5px;
+  color: #cccccc;
+}
+.box-wrapper{
+  position: absolute;
+  bottom:1em;
+  width:100%;
+}
+.pymio-label{
+  letter-spacing: 5px;
+  font-weight: bold;
+  color: #cccccc;
+  font-size: 0.7em;
+}
+.status-label{
+  color: #3eff3e !important;
+  float:left;
+}
+.search-box > input{
+  width: 100%;
+  background: #222222;
+  color: #cccccc;
+  text-align: center;
+  letter-spacing: 5px;
+}
+input[type='button']{
+  cursor: pointer;
+}
+.remove{
+  background: red;
+  color: #cccccc;
+  border-radius: 5px;
+  padding: 5px;
+  font-size: 0.75em;
+  cursor: pointer;
+}
+ol > li{
+  margin-top: 1em;
+}
+.box-button{
+  position: absolute;
+  z-index: 999999;
+  right: 0;
+  bottom: 0 ;
+  width: 100%;
+  background: green;
+  letter-spacing: 8px;
+  text-align: center;
+  color: #cccccc;
+  padding-top:0.5em;
+  padding-bottom: 0.5em;
+  cursor: pointer;
+}
+.box-button span{
+  float:left;
+  width:49%;
+  margin-left:1%;
+  transition: letter-spacing 0.5s;
+  -webkit-transition: letter-spacing 0.5s;
+}
+.box-button span:hover{
+  letter-spacing:.75em;
+}
+.refresh{
+  font-size: 0.6em;
+  padding:0.1em;
+  border-radius: 3px;
+  background: #222222;
+  letter-spacing: 3px;
+
+  transition: letter-spacing 0.5s;
+  -webkit-transition: letter-spacing 0.5s;
+  cursor: pointer;
+}
+.refresh:hover{
+  letter-spacing:.5em;
+}
+#download-all{
+  position: fixed;
+  bottom: 1em;
+  right: 1em;
+  height: 2em;
+  width:10%;
+  background: rgba(250,255,255,0.5);
+  z-index: 9999999;
+  border-radius: 5px;
+  transition: background 0.5s;
+  -webkit-transition: background 0.5s;
+}
+#download-all span{
+  padding:5px;
+}
+#download-all:hover{
+  background: rgba(250,255,255,0.95);
+}
+#download-all > span{
+  cursor: pointer;
+  letter-spacing: 5px;
+  width: 100%;
+  text-align: center;
+  position: absolute;
+  font-weight: bold;
+}
+#results-container{
+  height: 8em;
+  overflow: hidden;
+  overflow-y: auto;
+}
