@@ -118,8 +118,9 @@ def set_yaml():
 def get_yaml():
     with open('config.yaml') as config:
         pymio = yaml.safe_load(config)
-        for vid in pymio:
-            print(pymio[vid])
+        if(pymio):
+            for vid in pymio:
+                print(pymio[vid])
 
     return json.dumps(pymio)
 

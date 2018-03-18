@@ -122,6 +122,7 @@ input[type='button']{
   padding: 5px;
   font-size: 0.75em;
   cursor: pointer;
+  float: right;
 }
 ol > li{
   margin-top: 1em;

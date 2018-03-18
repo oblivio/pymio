@@ -7,8 +7,7 @@ will download the .mp3 version of the video.
 
 **DISCLAIMER**
 pymio is an experiment provided  **AS IS** - this idea came out of a personal
-need - and decided to make it open source in
-case it is someday useful to someone. In it's current state -
+need - and is open sourced in case anyone finds it useful. In it's current state -
 it is **NOT** ready to be used in a production environment.
 
 **TECH STACK**

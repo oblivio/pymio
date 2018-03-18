@@ -31,7 +31,7 @@
           </div>
           <ol>
             <li v-for="entry in download_list">
-              {{ entry.vid_id[0] }} <span class="remove" v-on:click="removeVideo(entry.vid_id[0])">remove</span>
+              <a target="_blank" v-bind:href="'https://www.youtube.com/watch?v='+entry.vid_id[0]">{{ entry.vid_id[0] }}</a> <span class="remove" v-on:click="removeVideo(entry.vid_id[0])">remove</span>
               <ul>
                 <li v-for="k in Object.keys(entry)">
                   {{k}} : {{entry[k][0]}}
