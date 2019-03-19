@@ -7,6 +7,8 @@ from flask import request
 import urllib.parse as urlparse
 import json
 from flask import render_template,send_from_directory
+import urllib.request
+from bs4 import BeautifulSoup
 
 class VideoDownloader:
     def init(self):
@@ -24,6 +26,17 @@ class VideoDownloader:
                 print("Downloading...",vid,artist,album,title)
                 self.delete_mp3(vid)
                 self.download_video(vid, title, artist, album, genre, description, year)
+
+    def ytsearch(self,textToSearch):
+        query = urllib.parse.quote(textToSearch)
+        url = "https://www.youtube.com/results?search_query=" + query
+        response = urllib.request.urlopen(url)
+        html = response.read()
+        soup = BeautifulSoup(html, 'html.parser')
+        urls = []
+        for vid in soup.findAll(attrs={'class':'yt-uix-tile-link'}):
+            urls.append(vid['href'])
+        return urls
 
     def download_video(self,video_id, title, artist, album, genre, description, year):
         downloads_dir = 'downloads'
@@ -62,12 +75,7 @@ class VideoDownloader:
             downloads_dir+"/"+video_id+".mp3",
         ])
 
-    def search_google(self,query_string):
-        urls = []
-        for url in search('youtube.com watch?=v ' + query_string, stop=1):
-            print(url)
-            urls.append(url)
-        return urls
+
 
 vd = VideoDownloader()
 
@@ -129,7 +137,7 @@ def google_search():
     URL = request.url
     parsed_url = urlparse.urlparse(URL)
     tmpDict = (urlparse.parse_qs(parsed_url.query))
-    video_urls = vd.search_google(tmpDict['q'][0])
+    video_urls = vd.ytsearch(tmpDict['q'][0])
 
     search_results = {}
     search_results['results'] = []

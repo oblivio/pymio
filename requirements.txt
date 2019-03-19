@@ -1,4 +1,4 @@
 pytube
 flask
 ruamel.yaml
-googlesearch
+beautifulsoup4
